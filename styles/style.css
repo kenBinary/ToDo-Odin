@@ -77,9 +77,6 @@ aside>.new-project {
 }
 
 /* main Layout */
-main>* {
-    outline: 1px solid black;
-}
 
 main {
     overflow-y: auto;
@@ -171,4 +168,66 @@ header>img {
 
 .projects> :nth-child(n+2) {
     background-image: url("../resources/project.png");
+}
+
+/* main style */
+main>.project-title {
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 2.7rem;
+    font-weight: bolder;
+}
+
+main>.task-title {
+    border-bottom: 1px solid black;
+    font-size: 1.5rem;
+    padding-left: 5px;
+    margin-bottom: .25rem;
+    font-weight: bold;
+}
+
+.task {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid black;
+    padding: .5rem;
+    padding-left: 3rem;
+    column-gap: .3rem;
+}
+
+.task>.title {
+    flex-grow: 1;
+    width: 30%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.task>.description {
+    flex-grow: 1;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.task>img {
+    width: 2.1rem !important;
+}
+
+.unchecked {
+    background-image: url("../resources/unchecked.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: .2rem;
+    background-size: 2.1rem;
+}
+
+.checked {
+    background-image: url("../resources/checked.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: .2rem;
+    background-size: 2.1rem;
 }
