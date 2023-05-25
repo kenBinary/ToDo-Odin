@@ -84,6 +84,7 @@ aside>.new-project {
 
 main {
     overflow-y: auto;
+    position: relative;
 }
 
 .project-title {
@@ -102,6 +103,25 @@ main {
 
 .task {
     height: 8%;
+}
+.new-task{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 2.5rem;
+    border: 1px solid var(--accent);
+    position: fixed;
+    z-index: 999;
+    bottom: 5%;
+    right: 1%;
+    background-image: url("../resources/plus.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.35s ease-out;
+}
+.new-task:hover{
+    transform: rotate(360deg);
 }
 
 /* Header Style */
