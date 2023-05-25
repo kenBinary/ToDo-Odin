@@ -14,6 +14,9 @@ TASKS DISPLAY SECTION
 -task bar will displady title, details and date, also show button to mark task as importnant,
 button to edit, button to remove 
 
+-store tasks in an object or array
+-when options are clicked retrieve the tasklist object/array related to option
+
 
 COLOR BRAND
 -BLUE
