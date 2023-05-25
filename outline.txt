@@ -15,7 +15,11 @@ TASKS DISPLAY SECTION
 button to edit, button to remove 
 
 
-
+COLOR BRAND
+-BLUE
+-dominant: #dbeafe
+-complementary: #60a5fa
+-accent: #2563eb
 
 
 

@@ -2,10 +2,15 @@
 
 :root {
     font-family: 'Lato', sans-serif;
+    --dominant: #dbeafe;
+    --complementary: #60a5fa;
+    --accent: #2563eb;
+    --font-color: #172554;
 }
 
 * {
     box-sizing: border-box;
+    font-weight: bold;
 }
 
 /* Page Layout Structure */
@@ -18,7 +23,6 @@ body {
 
 body>* {
     padding: 1rem;
-    outline: 1px solid black;
 }
 
 header {
@@ -106,7 +110,8 @@ header {
     justify-content: center;
     align-items: center;
     column-gap: 1rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
     font-weight: bold;
 }
 
@@ -115,23 +120,26 @@ header>img {
 }
 
 /*Aside Style  */
+.home-options> :nth-child(n+2),
+.projects> :nth-child(n+2),
+.new-project {
+    cursor: pointer;
+}
+
 .home-options> :first-child,
 .projects> :first-child {
     font-size: 1.5rem;
     font-weight: bold;
-    border-bottom: 2px solid black;
 }
 
 .home-options> :nth-child(n+2),
 .projects> :nth-child(n+2) {
     font-size: 1.2rem;
     border-radius: 5px;
-    border: 1px solid black;
 }
 
 .new-project {
     font-size: 1.2rem;
-    border-top: 1px solid black;
     font-weight: 500;
 }
 
@@ -172,17 +180,14 @@ header>img {
 
 /* main style */
 main>.project-title {
-    border: 1px solid black;
     border-radius: 5px;
-    font-size: 2.7rem;
+    font-size: 2.5rem;
     font-weight: bolder;
 }
 
 main>.task-title {
-    border-bottom: 1px solid black;
     font-size: 1.5rem;
     padding-left: 5px;
-    margin-bottom: .25rem;
     font-weight: bold;
 }
 
@@ -190,7 +195,6 @@ main>.task-title {
     display: flex;
     justify-content: start;
     align-items: center;
-    border-bottom: 1px solid black;
     padding: .5rem;
     padding-left: 3rem;
     column-gap: .3rem;
@@ -230,4 +234,60 @@ main>.task-title {
     background-position-y: center;
     background-position-x: .2rem;
     background-size: 2.1rem;
+}
+
+/* web colors */
+body {
+    background-color: var(--dominant);
+}
+
+header {
+    background-color: var(--accent);
+    color: var(--dominant);
+}
+
+aside {
+    background-color: var(--complementary);
+}
+
+aside>.home-options> :first-child,
+aside>.projects> :first-child {
+    border-bottom: 3px solid var(--accent);
+}
+
+.selected {
+    background-color: var(--accent);
+}
+
+.home-options> :nth-child(n+2):hover,
+.projects> :nth-child(n+2):hover {
+    background-color: var(--accent);
+}
+
+main {
+    background-color: var(--dominant);
+}
+
+main>.project-title {
+    background-color: var(--complementary);
+}
+
+main>.task-title {
+    border-bottom: 2px solid var(--complementary);
+}
+
+main>.task {
+    cursor: pointer;
+    border-bottom: 1px solid var(--complementary);
+    transition: 0.2s ease-out;
+}
+
+main>.task:hover {
+    background-color: rgba(96, 165, 250, .4);
+}
+
+main>.task>.date {
+    padding: .5rem;
+    border-radius: 1rem;
+    background-color: var(--complementary);
 }
