@@ -1,0 +1,22 @@
+HOME SECTION
+-when options clicked delete current tasks and retrieve and display tasks related to options
+-update project title
+
+PROJECT SECTION
+-when options clicked delete current tasks and retrieve and display tasks related to options
+-update project title
+
+NEW PROJECT SECTION
+-when "new project" button clicked create new project and add it to Proejcts section
+
+TASKS DISPLAY SECTION
+-each task has TITLE, DETAIL and Date
+-task bar will displady title, details and date, also show button to mark task as importnant,
+button to edit, button to remove 
+
+
+
+
+
+
+
