@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n\n\n//# sourceURL=webpack://todo-odin/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n/* harmony import */ var _popup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./popup */ \"./src/popup.js\");\n\r\n\r\n\r\n// pop up handler\r\nconst newTask = document.querySelector(\".new-task\");\r\nnewTask.addEventListener('click',()=>{\r\n    const popUp = document.querySelector(\".add-task\");\r\n    (0,_popup__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(popUp);\r\n});\r\n\r\n\n\n//# sourceURL=webpack://todo-odin/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/popup.js":
+/*!**********************!*\
+  !*** ./src/popup.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst showPopUp = (element) => {\r\n    // const element = document.createElement(\"div\");\r\n    let classList = Array.from(element.classList);\r\n    if (classList.includes(\"hide-popup\")) {\r\n        element.classList.remove(\"hide-popup\");\r\n        element.classList.add(\"show-popup\");\r\n    }\r\n    else {\r\n        element.classList.remove(\"show-popup\");\r\n        element.classList.add(\"hide-popup\");\r\n    }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showPopUp);\n\n//# sourceURL=webpack://todo-odin/./src/popup.js?");
 
 /***/ })
 
