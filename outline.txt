@@ -8,6 +8,7 @@ PROJECT SECTION
 
 NEW PROJECT SECTION
 -when "new project" button clicked create new project and add it to Proejcts section
+-projects created should be added to the array
 
 TASKS DISPLAY SECTION
 -each task has TITLE, DETAIL and Date
