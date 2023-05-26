@@ -376,3 +376,6 @@ input {
 .hide-popup{
     display: none;
 }
+.show-popup{
+    display: flex;
+}
