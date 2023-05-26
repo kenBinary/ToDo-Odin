@@ -104,7 +104,8 @@ main {
 .task {
     height: 8%;
 }
-.new-task{
+
+.new-task {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 2.5rem;
@@ -120,7 +121,8 @@ main {
     cursor: pointer;
     transition: 0.35s ease-out;
 }
-.new-task:hover{
+
+.new-task:hover {
     transform: rotate(360deg);
 }
 
@@ -310,4 +312,67 @@ main>.task>.date {
     padding: .5rem;
     border-radius: 1rem;
     background-color: var(--complementary);
+}
+
+/* add-task pop up */
+.add-task {
+    aspect-ratio: 4/5;
+    background-color: var(--complementary);
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: .5rem;
+    z-index: 999;
+    overflow: hidden;
+    padding: 1rem;
+    justify-content: space-between;
+    row-gap: .5rem;
+}
+
+/* add-task pop up style */
+.add-task {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+textarea,
+input {
+    resize: none;
+    cursor: pointer;
+}
+
+.add-task>* {
+    width: 100%;
+    border-radius: .2rem;
+}
+
+.add-task> :nth-child(7),
+.add-task>:nth-child(8) {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--font-color);
+    background-color: var(--dominant);
+    cursor: pointer;
+}
+
+.add-task> :nth-child(1),
+.add-task> :nth-child(3),
+.add-task> :nth-child(5) {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    font-size: 1.1rem;
+}
+
+.add-task> :nth-child(2),
+.add-task> :nth-child(4),
+.add-task> :nth-child(6) {
+    background-color: var(--dominant);
+}
+.hide-popup{
+    display: none;
 }
