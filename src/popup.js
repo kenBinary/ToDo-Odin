@@ -1,3 +1,4 @@
+
 const showPopUp = (element) => {
     // const element = document.createElement("div");
     let classList = Array.from(element.classList);
@@ -10,5 +11,4 @@ const showPopUp = (element) => {
         element.classList.add("hide-popup");
     }
 }
-
-export default showPopUp;
+export { showPopUp,informationPopUp };
