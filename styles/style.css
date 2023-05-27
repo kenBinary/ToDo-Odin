@@ -379,3 +379,7 @@ input {
 .show-popup{
     display: flex;
 }
+/* make element invisible */
+.invisible{
+    visibility: hidden;
+}
