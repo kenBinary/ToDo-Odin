@@ -2,6 +2,7 @@ import information from "../dist/resources/information.png";
 import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
 import { informationPopUp, rervertPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
+import { projectTasks } from "./index.js";
 const createTaskElement = (taskDetails, taskObject) => {
     const myTaskObject = taskObject;
     const myDetails = taskDetails;
@@ -50,6 +51,16 @@ const createTaskElement = (taskDetails, taskObject) => {
                 });
             });
         }
+        else if (opCounter === 2) {
+            newImage.addEventListener('click', () => {
+                projectTasks.forEach((element, index, Array) => {
+                    if (element.identifier === myDetails.identifier) {
+                        container.remove();
+                        Array.splice(index, 1);
+                    }
+                });
+            });
+        }
         opCounter++;
         container.appendChild(newImage);
     });
@@ -62,6 +73,14 @@ const createTaskElement = (taskDetails, taskObject) => {
     });
     const updateStatus = () => {
         myDetails.isCompleted = myDetails.isCompleted ? false : true;
+        if (myDetails.isCompleted) {
+            container.classList.remove("unchecked");
+            container.classList.add("checked");
+        }
+        else {
+            container.classList.remove("checked");
+            container.classList.add("unchecked");
+        }
     }
     // edit the task
     const editTask = (title, description, date) => {

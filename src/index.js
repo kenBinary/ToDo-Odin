@@ -1,7 +1,5 @@
 import "normalize.css";
 import { showPopUp, rervertPopUp, editPopUp } from "./popup";
-import task from "./task";
-import createTaskElement from "./taskElement";
 import taskFacilitator from "./addTask";
 
 // variable to keep track of current project
@@ -36,4 +34,4 @@ add.addEventListener('click', (e) => {
         addNewTask();
     }
 });
-
+export {projectTasks};
