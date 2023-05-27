@@ -1,5 +1,6 @@
 
-const showPopUp = (element) => {
+const showPopUp = () => {
+    const element = document.querySelector(".add-task");
     let classList = Array.from(element.classList);
     if (classList.includes("hide-popup")) {
         element.classList.remove("hide-popup");

@@ -18,8 +18,9 @@ newTask.addEventListener('click', () => {
 
 const closePopUp = document.querySelector(".close-task");
 closePopUp.addEventListener('click', () => {
-    const popUp = document.querySelector(".add-task");
-    showPopUp(popUp);
+    // const popUp = document.querySelector(".add-task");
+    // showPopUp(popUp);
+    showPopUp();
 });
 
 const add = document.querySelector(".add");
