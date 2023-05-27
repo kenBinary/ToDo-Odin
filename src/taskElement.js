@@ -8,11 +8,9 @@ const createTaskElement = (taskDetails) => {
     let counter = 0;
     for (let key in taskDetails) {
         if (counter === 3) {
-            console.log("break")
             break;
         }
         else {
-            console.log(counter)
             const newDiv = document.createElement("div");
             newDiv.classList.add(key);
             newDiv.textContent = taskDetails[key];

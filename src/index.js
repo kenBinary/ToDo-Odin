@@ -2,6 +2,7 @@ import "normalize.css";
 import { showPopUp } from "./popup";
 import task from "./task";
 import createTaskElement from "./taskElement";
+import taskFacilitator from "./addTask";
 
 // variable to keep track of current project
 var currentProject;
@@ -23,12 +24,9 @@ closePopUp.addEventListener('click', () => {
 
 const add = document.querySelector(".add");
 add.addEventListener('click', () => {
-    const x = document.querySelector(".main");
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
     const date = document.querySelector("#date").value;
-    const testTask = task(title, description, date);
-    const newTaskElement = createTaskElement(testTask.taskObject);
-    x.appendChild(newTaskElement.container);
+    taskFacilitator.addTask(title, description, date);
 });
 
