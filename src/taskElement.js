@@ -1,11 +1,14 @@
 import information from "../dist/resources/information.png";
 import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
+import { informationPopUp, showPopUp } from "./popup.js";
 const createTaskElement = (taskDetails) => {
+    const myDetails = taskDetails;
     const container = document.createElement("div");
     container.classList.add("task");
     container.classList.add("unchecked");
     let counter = 0;
+
     for (let key in taskDetails) {
         if (counter === 3) {
             break;
@@ -23,10 +26,19 @@ const createTaskElement = (taskDetails) => {
         const newImage = new Image();
         newImage.src = element;
         newImage.addEventListener('click', () => {
-            console.log("asldfjk")
+            console.log(myDetails)
+            informationPopUp(myDetails);
+            showPopUp();
         });
         container.appendChild(newImage);
     });
+    const updateStatus = () => {
+        container.addEventListener('click', (e) => {
+            let parent = e.target;
+            if (parent.classList.contains("task")) {
+            }
+        });
+    }
     return { container };
 }
 export default createTaskElement;

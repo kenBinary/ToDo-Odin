@@ -19,6 +19,7 @@ const taskFacilitator = (() => {
             const newTaskElement = createTaskElement(newTask.taskObject);
             main.appendChild(newTaskElement.container);
             showPopUp();
+            return newTask.taskObject;
         }
     }
     return { addTask }
