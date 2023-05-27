@@ -24,5 +24,19 @@ const informationPopUp = (taskDetails) => {
     date.value = taskDetails.date;
     addTask.classList.add("invisible");
 }
+const rervertPopUp = () => {
+    const title = document.querySelector("#title");
+    const description = document.querySelector("#description");
+    const date = document.querySelector("#date");
+    title.removeAttribute("readonly");
+    description.removeAttribute("readonly");
+    date.removeAttribute("readonly");
+    title.value = '';
+    description.value = '';
+    date.value = '';
+    const addTask = document.querySelector(".add");
+    addTask.classList.remove("invisible");
+    addTask.textContent = "Add";
+}
 
-export { showPopUp, informationPopUp };
+export { showPopUp, informationPopUp,rervertPopUp };

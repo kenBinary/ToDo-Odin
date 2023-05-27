@@ -1,7 +1,7 @@
 import information from "../dist/resources/information.png";
 import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
-import { informationPopUp, showPopUp } from "./popup.js";
+import { informationPopUp, rervertPopUp, showPopUp } from "./popup.js";
 const createTaskElement = (taskDetails) => {
     const myDetails = taskDetails;
     const container = document.createElement("div");
@@ -26,7 +26,6 @@ const createTaskElement = (taskDetails) => {
         const newImage = new Image();
         newImage.src = element;
         newImage.addEventListener('click', () => {
-            console.log(myDetails)
             informationPopUp(myDetails);
             showPopUp();
         });
