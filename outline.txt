@@ -26,4 +26,27 @@ COLOR BRAND
 
 
 
+//loading tasks to respective projects
+-
+//adding tasks to respective projects
+-get the current currentProject
+-get details of popup
+-when add button clicked
+-store details to an object
+-from the object, create a task element corresponding to that object
 
+//identifying tasks with their objects and elements and assigning identifiers 
+-use title + description as identifier
+-to retrive identifier get the title+description of the clicked task element and compare
+
+*completed task
+-when completed update the object of the task and then the element
+
+*info popup
+-
+-info popup inputs must be readonly
+-add button visibility is hidden
+
+*edit popup
+
+*remove task
