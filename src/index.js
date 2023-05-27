@@ -1,5 +1,5 @@
 import "normalize.css";
-import { showPopUp,rervertPopUp } from "./popup";
+import { showPopUp, rervertPopUp, editPopUp } from "./popup";
 import task from "./task";
 import createTaskElement from "./taskElement";
 import taskFacilitator from "./addTask";
@@ -8,6 +8,7 @@ import taskFacilitator from "./addTask";
 var currentProject;
 var projects = [];
 var projectTasks = [];
+
 
 // pop up handler
 const newTask = document.querySelector(".new-task");
@@ -21,13 +22,18 @@ closePopUp.addEventListener('click', () => {
     showPopUp();
     rervertPopUp();
 });
-
+// adds a new task
 const add = document.querySelector(".add");
-add.addEventListener('click', () => {
+function addNewTask() {
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
     const date = document.querySelector("#date").value;
     projectTasks.push(taskFacilitator.addTask(title, description, date));
     rervertPopUp();
+}
+add.addEventListener('click', (e) => {
+    if (e.target.textContent === "Add") {
+        addNewTask();
+    }
 });
 

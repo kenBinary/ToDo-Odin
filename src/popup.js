@@ -24,6 +24,18 @@ const informationPopUp = (taskDetails) => {
     date.value = taskDetails.date;
     addTask.classList.add("invisible");
 }
+const editPopUp = () => {
+    const addTask = document.querySelector(".add");
+    addTask.textContent = "Edit";
+    return { addTask };
+}
+const getPopUpDetails = () => {
+    const title = document.querySelector("#title");
+    const description = document.querySelector("#description");
+    const date = document.querySelector("#date");
+    let details = [title, description, date];
+    return details;
+}
 const rervertPopUp = () => {
     const title = document.querySelector("#title");
     const description = document.querySelector("#description");
@@ -39,4 +51,4 @@ const rervertPopUp = () => {
     addTask.textContent = "Add";
 }
 
-export { showPopUp, informationPopUp,rervertPopUp };
+export { showPopUp, informationPopUp, rervertPopUp, editPopUp,getPopUpDetails };
