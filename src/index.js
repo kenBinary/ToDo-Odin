@@ -1,10 +1,11 @@
 import "normalize.css";
 import { showPopUp, rervertPopUp, editPopUp } from "./popup";
 import taskFacilitator from "./addTask";
-
+import { selectHome } from "./projectHandler";
+import { createProject } from "./projectHandler";
 // variable to keep track of current project
 var currentProject;
-var projects = [];
+// var projects = [];
 var projectTasks = [];
 
 
@@ -34,4 +35,15 @@ add.addEventListener('click', (e) => {
         addNewTask();
     }
 });
-export {projectTasks};
+
+selectHome();
+// creating new project
+const newProject = document.querySelector(".new-project");
+let projects = document.querySelector(".projects");
+newProject.addEventListener('click', () => {
+    const newProject = createProject(projects, currentProject);
+    projects.appendChild(newProject.newDiv);
+});
+
+
+export { projectTasks, currentProject };
