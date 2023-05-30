@@ -50,3 +50,7 @@ COLOR BRAND
 *edit popup
 
 *remove task
+
+
+*current to do*
+-refractor code to have it better communicate ui with storing data

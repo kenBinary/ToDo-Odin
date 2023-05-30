@@ -1,8 +1,9 @@
+import { startOfYesterday } from "date-fns";
+
 let projects = window.localStorage;
 
 function newProject(projectName) {
     let emptyArray = []
-    let projectName = projectName;
     projects.setItem(projectName, JSON.stringify(emptyArray));
 }
 function removeProject(projectName) {
@@ -11,7 +12,7 @@ function removeProject(projectName) {
 function addTask(projectName, task) {
     let storedTasks = JSON.parse(projects.getItem(projectName));
     storedTasks.push(task);
-    projects.setItem(projectName, JSON.parse(storedTasks));
+    projects.setItem(projectName, JSON.stringify(storedTasks));
 }
 function getTasks(projectName) {
     let storedTasks = JSON.parse(projects.getItem(projectName));
@@ -26,3 +27,17 @@ function removeTask(projectName, identifier) {
     });
     return JSON.stringify(storedTasks);
 }
+function getAllProjects() {
+    let projectKeys = []
+    for (var i = 0; i < projects.length; i++) {
+        var key = projects.key(i);
+        projectKeys.push(key);
+    }
+    return projectKeys;
+}
+function getProjectValues(key) {
+    let keyValue = JSON.parse(projects.getItem(key));
+    return keyValue;
+}
+
+export { projects, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues }
