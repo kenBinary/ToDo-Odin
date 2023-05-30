@@ -373,18 +373,22 @@ input {
 .add-task> :nth-child(6) {
     background-color: var(--dominant);
 }
-.hide-popup{
+
+.hide-popup {
     display: none;
 }
-.show-popup{
+
+.show-popup {
     display: flex;
 }
+
 /* make element invisible */
-.invisible{
+.invisible {
     visibility: hidden;
 }
+
 /* create project style */
-.create-project{
+.create-project {
     border: 1px solid var(--font-color);
     height: 25%;
     display: flex;
@@ -394,11 +398,13 @@ input {
     align-items: center;
     column-gap: 1rem;
 }
-.create-project > :first-child{
+
+.create-project> :first-child {
     width: 90%;
     border-radius: 5px;
 }
-.create-project > :nth-child(n+2){
+
+.create-project> :nth-child(n+2) {
     outline: 1px solid black;
     background-color: var(--dominant);
     display: flex;
@@ -407,8 +413,24 @@ input {
     width: 40%;
     border-radius: 5px;
 }
-.create-project > :last-child > * {
+
+.create-project> :last-child>* {
     width: 40%;
     display: flex;
     justify-content: center;
+}
+
+/* project option styles */
+.option {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.remove-option {
+    background-image: url("../resources/remove.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 20%;
+    height: 70%;
 }
