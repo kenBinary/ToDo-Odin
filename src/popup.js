@@ -1,15 +1,7 @@
-
-const showPopUp = () => {
+function showPopUp() {
     const element = document.querySelector(".add-task");
-    let classList = Array.from(element.classList);
-    if (classList.includes("hide-popup")) {
-        element.classList.remove("hide-popup");
-        element.classList.add("show-popup");
-    }
-    else {
-        element.classList.remove("show-popup");
-        element.classList.add("hide-popup");
-    }
+    element.classList.toggle('hide-popup');
+    element.classList.toggle('show-popup');
 }
 const informationPopUp = (taskDetails) => {
     const title = document.querySelector("#title");
@@ -51,4 +43,4 @@ const rervertPopUp = () => {
     addTask.textContent = "Add";
 }
 
-export { showPopUp, informationPopUp, rervertPopUp, editPopUp,getPopUpDetails };
+export { showPopUp, informationPopUp, rervertPopUp, editPopUp, getPopUpDetails };

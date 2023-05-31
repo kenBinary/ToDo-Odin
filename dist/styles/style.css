@@ -375,11 +375,11 @@ input {
 }
 
 .hide-popup {
-    display: none;
+    display: none !important;
 }
 
 .show-popup {
-    display: flex;
+    display: flex !important;
 }
 
 /* make element invisible */
@@ -426,6 +426,7 @@ input {
     justify-content: space-between;
     overflow: hidden;
 }
+
 .remove-option {
     background-image: url("../resources/remove.png");
     background-size: contain;

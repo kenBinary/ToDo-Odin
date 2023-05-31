@@ -2,7 +2,6 @@ import information from "../dist/resources/information.png";
 import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
 import { informationPopUp, rervertPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
-import { projectTasks } from "./index.js";
 import * as storage from "./localStorage.js";
 const createTaskElement = (taskDetails, taskObject) => {
     const myTaskObject = taskObject;
@@ -38,28 +37,31 @@ const createTaskElement = (taskDetails, taskObject) => {
         }
         else if (opCounter === 1) {
             newImage.addEventListener('click', () => {
-                editPopUp();
                 showPopUp();
+                const editButton = editPopUp();
                 let details = getPopUpDetails();
+
                 let elements = Array.from(container.childNodes);
                 details[0].value = elements[0].textContent;
                 details[1].value = elements[1].textContent;
                 details[2].value = elements[2].textContent;
-                editPopUp().addTask.addEventListener('click', () => {
+                editButton.addTask.addEventListener('click', (event) => {
+                    event.stopPropagation()
                     editTask(details[0].value, details[1].value, details[2].value);
                     showPopUp();
                     rervertPopUp();
-                });
+                }, { once: true });
             });
         }
         else if (opCounter === 2) {
             newImage.addEventListener('click', () => {
-                projectTasks.forEach((element, index, Array) => {
-                    if (element.identifier === myDetails.identifier) {
-                        container.remove();
-                        Array.splice(index, 1);
-                    }
-                });
+                // projectTasks.forEach((element, index, Array) => {
+                //     if (element.identifier === myDetails.identifier) {
+                //         container.remove();
+                //         Array.splice(index, 1);
+                //     }
+                // });
+                console.log("bruh")
             });
         }
         opCounter++;

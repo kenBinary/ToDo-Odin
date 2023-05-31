@@ -16,15 +16,7 @@ function getTasks(projectName) {
     let storedTasks = JSON.parse(projects.getItem(projectName));
     return storedTasks;
 }
-function removeTask(projectName, identifier) {
-    let storedTasks = JSON.parse(projects.getItem(projectName));
-    storedTasks.forEach((element, index, array) => {
-        if (element.identifier === identifier) {
-            array.splice(index, 1);
-        }
-    });
-    return JSON.stringify(storedTasks);
-}
+
 function getAllProjects() {
     let projectKeys = []
     for (var i = 0; i < projects.length; i++) {
@@ -38,7 +30,6 @@ function getProjectValues(key) {
     return keyValue;
 }
 
-// work on editing tasks
 function editTask(project, task, identifier) {
     let value = JSON.parse(projects.getItem(project));
     value.forEach((element, index, array) => {
@@ -46,6 +37,16 @@ function editTask(project, task, identifier) {
             array.splice(index, 1, task.taskObject)
         }
     })
+    let newValue = JSON.stringify(value);
+    projects.setItem(project, newValue)
+}
+function removeTask(project, task, identifier) {
+    let value = JSON.parse(project.getItem(project));
+    value.forEach((element, index, array) => {
+        if (identifier === element.identifier) {
+            array.splice(index, 1)
+        }
+    });
     let newValue = JSON.stringify(value);
     projects.setItem(project, newValue)
 }

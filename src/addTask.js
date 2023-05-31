@@ -21,13 +21,10 @@ const taskFacilitator = (() => {
         }
     }
     const initializeTasks = (title, description, date) => {
-        if (!checkInput(title, date)) {
-            const newTask = task(title, description, date);
-            const newTaskElement = createTaskElement(newTask.taskObject, newTask);
-            main.appendChild(newTaskElement.container);
-            const currentProject = document.querySelector(".project-title").textContent;
-            return newTask.taskObject;
-        }
+        const newTask = task(title, description, date);
+        const newTaskElement = createTaskElement(newTask.taskObject, newTask);
+        main.appendChild(newTaskElement.container);
+        return newTask.taskObject;
     }
     return { addTask, initializeTasks }
 })();
