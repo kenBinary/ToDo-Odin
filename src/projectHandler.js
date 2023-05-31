@@ -1,14 +1,42 @@
 import * as storage from "./localStorage.js";
+import * as dateFns from "date-fns";
 // Selecting Home Options
+function resetSelection(options) {
+    options.forEach((element) => {
+        if (element.classList.contains("selected")) {
+            element.classList.toggle("selected");
+        }
+    });
+}
 function selectHome() {
     let homeOptions = Array.from(document.querySelector(".home-options").children);
     homeOptions.shift();
-    homeOptions.forEach(element => {
+    homeOptions.forEach((element, index, array) => {
         element.addEventListener('click', () => {
+            const currentProject = document.querySelector(".project-title");
+            currentProject.textContent = element.textContent;
+            resetSelection(array);
+            element.classList.toggle("selected");
+            console.log(getTodayTasks())
         });
     });
-
 }
+// home tasks
+function getTodayTasks() {
+    let projects = storage.getAllProjects();
+    let today = [];
+    projects.forEach((element, index, array) => {
+        let values = storage.getProjectValues(element);
+        values.forEach(element => {
+            let date = new Date(element.date);
+            if (dateFns.isToday(date)) {
+                today.push(element);
+            }
+        })
+    });
+    return today;
+}
+
 // creating a project
 const createProject = () => {
     const newDiv = document.createElement("div");

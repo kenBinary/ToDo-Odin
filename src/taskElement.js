@@ -56,14 +56,8 @@ const createTaskElement = (taskDetails, taskObject) => {
         else if (opCounter === 2) {
             newImage.addEventListener('click', () => {
                 const currentProject = document.querySelector(".project-title").textContent;
-                storage.removeTask(currentProject,myTaskObject.taskObject.identifier);
+                storage.removeTask(currentProject, myTaskObject.taskObject.identifier);
                 container.remove();
-                // projectTasks.forEach((element, index, Array) => {
-                //     if (element.identifier === myDetails.identifier) {
-                //         container.remove();
-                //         Array.splice(index, 1);
-                //     }
-                // });
             });
         }
         opCounter++;
@@ -76,8 +70,9 @@ const createTaskElement = (taskDetails, taskObject) => {
             updateStatus();
         }
     });
-    const updateStatus = () => {
+    function updateStatus() {
         myDetails.isCompleted = myDetails.isCompleted ? false : true;
+        console.log(myDetails);
         if (myDetails.isCompleted) {
             container.classList.remove("unchecked");
             container.classList.add("checked");
