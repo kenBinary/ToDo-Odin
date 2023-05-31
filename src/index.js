@@ -3,9 +3,6 @@ import { showPopUp, rervertPopUp, editPopUp } from "./popup";
 import taskFacilitator from "./addTask";
 import { selectHome, createProject, addProject, cancelProject } from "./projectHandler";
 import * as storage from "./localStorage";
-// variable to keep track of current project
-var projectTasks = [];
-
 
 // pop up handler
 const newTask = document.querySelector(".new-task");
@@ -19,23 +16,17 @@ closePopUp.addEventListener('click', () => {
     showPopUp();
     rervertPopUp();
 });
-// adds a new task
+
+// ADDS A NEW TASK
 const add = document.querySelector(".add");
 function addNewTask() {
     const title = document.querySelector("#title").value;
     const description = document.querySelector("#description").value;
     const date = document.querySelector("#date").value;
+    const currentProject = document.querySelector(".project-title").textContent;
     showPopUp();
-    const task = taskFacilitator.addTask(title, description, date);
-    // fix this part where task is added to storage despite lacking inputs
-
-    // add task to current project
-    // const currentProject = document.querySelector(".project-title").textContent;
-    // storage.addTask(currentProject, task)
-
-    projectTasks.push(task);
+    taskFacilitator.addTask(title, description, date, currentProject);
     rervertPopUp();
-    return task;
 }
 add.addEventListener('click', (e) => {
     if (e.target.textContent === "Add") {
@@ -60,7 +51,7 @@ newProject.addEventListener('click', () => {
     });
     projects.appendChild(project.newDiv);
 });
-
+// initializes the data that was previously stored
 const initializeData = (() => {
     if (storage.projects.length > 0) {
         let projectList = storage.getAllProjects();
@@ -77,5 +68,3 @@ const initializeData = (() => {
         });
     }
 })();
-
-export { projectTasks };

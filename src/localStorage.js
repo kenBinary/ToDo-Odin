@@ -1,5 +1,3 @@
-import { startOfYesterday } from "date-fns";
-
 let projects = window.localStorage;
 
 function newProject(projectName) {
@@ -40,4 +38,16 @@ function getProjectValues(key) {
     return keyValue;
 }
 
-export { projects, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues }
+// work on editing tasks
+function editTask(project, task, identifier) {
+    let value = JSON.parse(projects.getItem(project));
+    value.forEach((element, index, array) => {
+        if (identifier === element.identifier) {
+            array.splice(index, 1, task.taskObject)
+        }
+    })
+    let newValue = JSON.stringify(value);
+    projects.setItem(project, newValue)
+}
+
+export { projects, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }

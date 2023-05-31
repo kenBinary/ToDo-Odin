@@ -3,6 +3,7 @@ import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
 import { informationPopUp, rervertPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
 import { projectTasks } from "./index.js";
+import * as storage from "./localStorage.js";
 const createTaskElement = (taskDetails, taskObject) => {
     const myTaskObject = taskObject;
     const myDetails = taskDetails;
@@ -84,7 +85,14 @@ const createTaskElement = (taskDetails, taskObject) => {
     }
     // edit the task
     const editTask = (title, description, date) => {
+        const currentProject = document.querySelector(".project-title").textContent;
+        let previousIdentifier = myTaskObject.taskObject.identifier;
+
         myTaskObject.editTask(title, description, date);
+        storage.editTask(currentProject, myTaskObject, previousIdentifier);
+
+
+
         let elements = Array.from(container.childNodes);
         elements[0].textContent = title;
         elements[1].textContent = description;
