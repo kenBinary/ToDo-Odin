@@ -55,13 +55,15 @@ const createTaskElement = (taskDetails, taskObject) => {
         }
         else if (opCounter === 2) {
             newImage.addEventListener('click', () => {
+                const currentProject = document.querySelector(".project-title").textContent;
+                storage.removeTask(currentProject,myTaskObject.taskObject.identifier);
+                container.remove();
                 // projectTasks.forEach((element, index, Array) => {
                 //     if (element.identifier === myDetails.identifier) {
                 //         container.remove();
                 //         Array.splice(index, 1);
                 //     }
                 // });
-                console.log("bruh")
             });
         }
         opCounter++;

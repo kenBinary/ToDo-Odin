@@ -40,8 +40,8 @@ function editTask(project, task, identifier) {
     let newValue = JSON.stringify(value);
     projects.setItem(project, newValue)
 }
-function removeTask(project, task, identifier) {
-    let value = JSON.parse(project.getItem(project));
+function removeTask(project, identifier) {
+    let value = JSON.parse(projects.getItem(project));
     value.forEach((element, index, array) => {
         if (identifier === element.identifier) {
             array.splice(index, 1)
