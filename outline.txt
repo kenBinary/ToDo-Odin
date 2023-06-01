@@ -53,5 +53,6 @@ COLOR BRAND
 
 
 *current to do*
--work on editing task part
+-remove task project dependency from DOM
+-when clicking on home options add task button should be removed/disabled
 

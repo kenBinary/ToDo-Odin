@@ -45,6 +45,9 @@ newProject.addEventListener('click', () => {
     const project = createProject();
     project.add.addEventListener('click', () => {
         addProject(projects, project.input.value);
+        const currentProject = document.querySelector(".project-title");
+        currentProject.textContent = project.input.value;
+        taskFacilitator.removeAllTasks();
         cancelProject(project.newDiv)
     });
     project.cancel.addEventListener('click', () => {

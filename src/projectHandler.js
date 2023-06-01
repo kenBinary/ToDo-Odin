@@ -1,5 +1,6 @@
 import * as storage from "./localStorage.js";
 import taskFacilitator from "./addTask.js";
+import { disableAddTask, showAddTask } from "./popup.js";
 import task from "./task.js";
 // Selecting Home Options
 function resetSelection(options) {
@@ -14,6 +15,7 @@ function selectHome() {
     homeOptions.shift();
     homeOptions.forEach((element, index, array) => {
         element.addEventListener('click', () => {
+            disableAddTask();
             const currentProject = document.querySelector(".project-title");
             currentProject.textContent = element.textContent;
             resetSelection(array);
@@ -90,13 +92,13 @@ function addProject(projects, input) {
         // listener for when project element is clicked
         let tasks = [];
         newDiv.addEventListener('click', () => {
+            showAddTask();
             const currentProject = document.querySelector(".project-title");
             currentProject.textContent = newDiv.textContent;
             tasks = storage.getProjectValues(newDiv.textContent);
             taskFacilitator.removeAllTasks();
             tasks.forEach((element) => {
                 taskFacilitator.initializeTasks(element);
-
             });
             // taskFacilitator.removeAllTasks();
         });

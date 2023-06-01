@@ -42,5 +42,13 @@ const rervertPopUp = () => {
     addTask.classList.remove("invisible");
     addTask.textContent = "Add";
 }
+function disableAddTask() {
+    const newTaskButton = document.querySelector(".new-task");
+    newTaskButton.classList.add("invisible");
+}
+function showAddTask() {
+    const newTaskButton = document.querySelector(".new-task");
+    newTaskButton.classList.remove("invisible");
+}
 
-export { showPopUp, informationPopUp, rervertPopUp, editPopUp, getPopUpDetails };
+export { showAddTask, disableAddTask, showPopUp, informationPopUp, rervertPopUp, editPopUp, getPopUpDetails };
