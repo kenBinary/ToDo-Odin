@@ -1,5 +1,5 @@
 import * as storage from "./localStorage.js";
-import * as dateFns from "date-fns";
+import taskFacilitator from "./addTask.js";
 // Selecting Home Options
 function resetSelection(options) {
     options.forEach((element) => {
@@ -17,27 +17,30 @@ function selectHome() {
             currentProject.textContent = element.textContent;
             resetSelection(array);
             element.classList.toggle("selected");
-            // console.log(storage.getTodayTasks())
-            // console.log(storage.getWeekTask())
-            storage.getCompletedTasks();
+            switch (element.textContent) {
+                case "All":
+                    taskFacilitator.removeAllTasks();
+                    console.log(storage.getAllTasks());
+                    break;
+                case "Today":
+                    taskFacilitator.removeAllTasks();
+                    console.log(storage.getTodayTasks())
+                    break;
+                case "Week":
+                    taskFacilitator.removeAllTasks();
+                    console.log(storage.getWeekTask())
+                    break;
+                case "Completed":
+                    taskFacilitator.removeAllTasks();
+                    console.log(storage.getCompletedTasks())
+                    break;
+                default:
+                    console.log("bruh")
+                    break;
+            }
         });
     });
 }
-// home tasks
-// function getTodayTasks() {
-//     let projects = storage.getAllProjects();
-//     let today = [];
-//     projects.forEach((element) => {
-//         let values = storage.getProjectValues(element);
-//         values.forEach(element => {
-//             let date = new Date(element.date);
-//             if (dateFns.isToday(date)) {
-//                 today.push(element);
-//             }
-//         })
-//     });
-//     return today;
-// }   
 
 // creating a project
 const createProject = () => {

@@ -26,6 +26,13 @@ const taskFacilitator = (() => {
         main.appendChild(newTaskElement.container);
         return newTask.taskObject;
     }
-    return { addTask, initializeTasks }
+    // removes tasks from main content
+    const removeAllTasks = () => {
+        const main = document.querySelectorAll(".task");
+        for (let child of main) {
+            child.remove()
+        }
+    }
+    return { addTask, initializeTasks, removeAllTasks }
 })();
 export default taskFacilitator;

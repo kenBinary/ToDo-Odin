@@ -1,4 +1,5 @@
 import * as dateFns from "date-fns";
+import task from "./task";
 let projects = window.localStorage;
 
 function newProject(projectName) {
@@ -94,5 +95,14 @@ function getCompletedTasks() {
     });
     return completed;
 }
+function getAllTasks() {
+    let projects = getAllProjects();
+    let tasks = [];
+    projects.forEach((element) => {
+        let values = getProjectValues(element)
+        tasks.push(...values);
+    });
+    return tasks;
+}
 
-export { projects, getCompletedTasks, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }
+export { projects, getAllTasks, getCompletedTasks, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }

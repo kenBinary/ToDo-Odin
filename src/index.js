@@ -51,6 +51,8 @@ newProject.addEventListener('click', () => {
     });
     projects.appendChild(project.newDiv);
 });
+
+
 // initializes the data that was previously stored
 const initializeData = (() => {
     if (storage.projects.length > 0) {
