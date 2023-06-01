@@ -1,3 +1,4 @@
+import * as dateFns from "date-fns";
 let projects = window.localStorage;
 
 function newProject(projectName) {
@@ -50,5 +51,35 @@ function removeTask(project, identifier) {
     let newValue = JSON.stringify(value);
     projects.setItem(project, newValue)
 }
+function getTodayTasks() {
+    let projects = getAllProjects();
+    let today = [];
+    projects.forEach((element) => {
+        let values = getProjectValues(element);
+        values.forEach(element => {
+            let date = new Date(element.date);
+            if (dateFns.isToday(date)) {
+                today.push(element);
+            }
+        })
+    });
+    return today;
+}
+function getWeekTask() {
+    let projects = getAllProjects();
+    let week = [];
+    projects.forEach((element) => {
+        let values = getProjectValues(element);
+        values.forEach(element => {
+            let taskDate = new Date(element.date);
+            let currentDate = dateFns.subDays(new Date(), 1);
+            let weekFromCurrent = dateFns.add(currentDate, { weeks: 1, days: 1 })
+            if (dateFns.isAfter(taskDate, currentDate) && dateFns.isBefore(taskDate, weekFromCurrent)) {
+                week.push(element);
+            }
+        })
+    });
+    return week;
+}
 
-export { projects, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }
+export { projects, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }

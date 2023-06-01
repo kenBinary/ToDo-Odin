@@ -17,25 +17,26 @@ function selectHome() {
             currentProject.textContent = element.textContent;
             resetSelection(array);
             element.classList.toggle("selected");
-            console.log(getTodayTasks())
+            // console.log(storage.getTodayTasks())
+            console.log(storage.getWeekTask())
         });
     });
 }
 // home tasks
-function getTodayTasks() {
-    let projects = storage.getAllProjects();
-    let today = [];
-    projects.forEach((element, index, array) => {
-        let values = storage.getProjectValues(element);
-        values.forEach(element => {
-            let date = new Date(element.date);
-            if (dateFns.isToday(date)) {
-                today.push(element);
-            }
-        })
-    });
-    return today;
-}
+// function getTodayTasks() {
+//     let projects = storage.getAllProjects();
+//     let today = [];
+//     projects.forEach((element) => {
+//         let values = storage.getProjectValues(element);
+//         values.forEach(element => {
+//             let date = new Date(element.date);
+//             if (dateFns.isToday(date)) {
+//                 today.push(element);
+//             }
+//         })
+//     });
+//     return today;
+// }   
 
 // creating a project
 const createProject = () => {
