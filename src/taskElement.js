@@ -68,11 +68,12 @@ const createTaskElement = (taskDetails, taskObject) => {
         let parent = e.target;
         if (parent.classList.contains("task")) {
             updateStatus();
+            const currentProject = document.querySelector(".project-title").textContent;
+            storage.updateTaskStatus(currentProject, myDetails);
         }
     });
     function updateStatus() {
         myDetails.isCompleted = myDetails.isCompleted ? false : true;
-        console.log(myDetails);
         if (myDetails.isCompleted) {
             container.classList.remove("unchecked");
             container.classList.add("checked");

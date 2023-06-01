@@ -1,5 +1,4 @@
 import * as dateFns from "date-fns";
-import task from "./task";
 let projects = window.localStorage;
 
 function newProject(projectName) {
@@ -31,7 +30,15 @@ function getProjectValues(key) {
     let keyValue = JSON.parse(projects.getItem(key));
     return keyValue;
 }
-
+function updateTaskStatus(currentProject, taskObject) {
+    let value = JSON.parse(projects.getItem(currentProject));
+    value.forEach((element, index, array) => {
+        if (element.identifier === taskObject.identifier) {
+            array.splice(index, 1, taskObject);
+        }
+    });
+    projects.setItem(currentProject, JSON.stringify(value));
+}
 function editTask(project, task, identifier) {
     let value = JSON.parse(projects.getItem(project));
     value.forEach((element, index, array) => {
@@ -105,4 +112,4 @@ function getAllTasks() {
     return tasks;
 }
 
-export { projects, getAllTasks, getCompletedTasks, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }
+export { projects, updateTaskStatus, getAllTasks, getCompletedTasks, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }
