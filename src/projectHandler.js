@@ -1,5 +1,6 @@
 import * as storage from "./localStorage.js";
 import taskFacilitator from "./addTask.js";
+import task from "./task.js";
 // Selecting Home Options
 function resetSelection(options) {
     options.forEach((element) => {
@@ -17,22 +18,35 @@ function selectHome() {
             currentProject.textContent = element.textContent;
             resetSelection(array);
             element.classList.toggle("selected");
+            let tasks = [];
             switch (element.textContent) {
                 case "All":
+                    tasks = storage.getAllTasks();
                     taskFacilitator.removeAllTasks();
-                    console.log(storage.getAllTasks());
+                    tasks.forEach((element) => {
+                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                    });
                     break;
                 case "Today":
                     taskFacilitator.removeAllTasks();
-                    console.log(storage.getTodayTasks())
+                    tasks = storage.getTodayTasks();
+                    tasks.forEach((element) => {
+                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                    });
                     break;
                 case "Week":
                     taskFacilitator.removeAllTasks();
-                    console.log(storage.getWeekTask())
+                    tasks = storage.getWeekTask();
+                    tasks.forEach((element) => {
+                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                    });
                     break;
                 case "Completed":
                     taskFacilitator.removeAllTasks();
-                    console.log(storage.getCompletedTasks())
+                    tasks = storage.getCompletedTasks();
+                    tasks.forEach((element) => {
+                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                    });
                     break;
                 default:
                     console.log("bruh")
