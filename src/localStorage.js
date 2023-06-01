@@ -81,5 +81,18 @@ function getWeekTask() {
     });
     return week;
 }
+function getCompletedTasks() {
+    let projects = getAllProjects();
+    let completed = [];
+    projects.forEach((element) => {
+        let values = getProjectValues(element);
+        values.forEach(element => {
+            if (element.isCompleted) {
+                completed.push(element);
+            }
+        })
+    });
+    return completed;
+}
 
-export { projects, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }
+export { projects, getCompletedTasks, getWeekTask, getTodayTasks, newProject, removeProject, addTask, getTasks, removeTask, getAllProjects, getProjectValues, editTask }

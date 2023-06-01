@@ -18,7 +18,8 @@ function selectHome() {
             resetSelection(array);
             element.classList.toggle("selected");
             // console.log(storage.getTodayTasks())
-            console.log(storage.getWeekTask())
+            // console.log(storage.getWeekTask())
+            storage.getCompletedTasks();
         });
     });
 }
