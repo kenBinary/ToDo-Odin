@@ -8,10 +8,6 @@ const createTaskElement = (taskDetails, taskObject) => {
     const myDetails = taskDetails;
     const container = document.createElement("div");
     container.classList.add("task");
-    // container.classList.add("unchecked");
-    // let isChecked = 
-    // console.log(taskDetails);
-    // console.log(taskDetails.isCompleted);
     if (taskDetails.isCompleted) {
         container.classList.add("checked");
     }

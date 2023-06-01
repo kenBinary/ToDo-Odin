@@ -36,6 +36,7 @@ add.addEventListener('click', (e) => {
 
 selectHome();
 
+
 // creating new project
 const newProject = document.querySelector(".new-project");
 let projects = document.querySelector(".projects");
@@ -66,7 +67,6 @@ const initializeData = (() => {
             });
         })
         alltasks.forEach((element) => {
-            // taskFacilitator.initializeTasks(element.title, element.description, element.date);
             taskFacilitator.initializeTasks(element);
         });
     }

@@ -21,7 +21,6 @@ const taskFacilitator = (() => {
         }
     }
     const initializeTasks = (taskObject) => {
-        // const newTask = task(title, description, date);
         const newTask = task(taskObject.title, taskObject.description, taskObject.date);
         newTask.taskObject.isCompleted = taskObject.isCompleted;
         const newTaskElement = createTaskElement(newTask.taskObject, newTask);

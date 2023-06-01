@@ -24,28 +24,29 @@ function selectHome() {
                     tasks = storage.getAllTasks();
                     taskFacilitator.removeAllTasks();
                     tasks.forEach((element) => {
-                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                        taskFacilitator.initializeTasks(element);
+
                     });
                     break;
                 case "Today":
                     taskFacilitator.removeAllTasks();
                     tasks = storage.getTodayTasks();
                     tasks.forEach((element) => {
-                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                        taskFacilitator.initializeTasks(element);
                     });
                     break;
                 case "Week":
                     taskFacilitator.removeAllTasks();
                     tasks = storage.getWeekTask();
                     tasks.forEach((element) => {
-                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                        taskFacilitator.initializeTasks(element);
                     });
                     break;
                 case "Completed":
                     taskFacilitator.removeAllTasks();
                     tasks = storage.getCompletedTasks();
                     tasks.forEach((element) => {
-                        taskFacilitator.initializeTasks(element.title, element.description, element.date);
+                        taskFacilitator.initializeTasks(element);
                     });
                     break;
                 default:
@@ -86,10 +87,20 @@ function addProject(projects, input) {
         newDiv.textContent = projectName;
         const removeOption = document.createElement("div")
         removeOption.classList.add("remove-option")
+        // listener for when project element is clicked
+        let tasks = [];
         newDiv.addEventListener('click', () => {
             const currentProject = document.querySelector(".project-title");
             currentProject.textContent = newDiv.textContent;
+            tasks = storage.getProjectValues(newDiv.textContent);
+            taskFacilitator.removeAllTasks();
+            tasks.forEach((element) => {
+                taskFacilitator.initializeTasks(element);
+
+            });
+            // taskFacilitator.removeAllTasks();
         });
+        // listener for when remove project element is clicked
         removeOption.addEventListener('click', (event) => {
             event.stopPropagation();
             const currentProject = document.querySelector(".project-title");
