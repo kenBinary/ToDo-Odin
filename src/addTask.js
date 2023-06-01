@@ -20,8 +20,10 @@ const taskFacilitator = (() => {
             storage.addTask(currentProject, newTask.taskObject)
         }
     }
-    const initializeTasks = (title, description, date) => {
-        const newTask = task(title, description, date);
+    const initializeTasks = (taskObject) => {
+        // const newTask = task(title, description, date);
+        const newTask = task(taskObject.title, taskObject.description, taskObject.date);
+        newTask.taskObject.isCompleted = taskObject.isCompleted;
         const newTaskElement = createTaskElement(newTask.taskObject, newTask);
         main.appendChild(newTaskElement.container);
         return newTask.taskObject;
