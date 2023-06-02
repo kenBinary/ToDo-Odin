@@ -14,7 +14,7 @@ newTask.addEventListener('click', () => {
 const closePopUp = document.querySelector(".close-task");
 closePopUp.addEventListener('click', () => {
     showPopUp();
-    rervertPopUp();
+    // rervertPopUp();
 });
 
 // ADDS A NEW TASK
@@ -26,7 +26,7 @@ function addNewTask() {
     const currentProject = document.querySelector(".project-title").textContent;
     showPopUp();
     taskFacilitator.addTask(title, description, date, currentProject);
-    rervertPopUp();
+    // rervertPopUp();
 }
 add.addEventListener('click', (e) => {
     if (e.target.textContent === "Add") {

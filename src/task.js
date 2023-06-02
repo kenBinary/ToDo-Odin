@@ -1,11 +1,12 @@
-const task = (title, description, date) => {
+const task = (title, description, date, project) => {
 
     let taskObject = {
         "title": title,
         "description": description,
         "date": date,
         "identifier": title + description,
-        "isCompleted": false
+        "isCompleted": false,
+        "project": project
     }
     let editTask = (newTitle, newDescription, newdate) => {
         taskObject.title = newTitle;
@@ -25,4 +26,6 @@ const task = (title, description, date) => {
 };
 
 export default task;
+
+
 

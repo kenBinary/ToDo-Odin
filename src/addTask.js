@@ -14,16 +14,16 @@ const taskFacilitator = (() => {
     }
     const addTask = (title, description, date, currentProject) => {
         if (!checkInput(title, date)) {
-            const newTask = task(title, description, date);
-            const newTaskElement = createTaskElement(newTask.taskObject, newTask);
+            const newTask = task(title, description, date, currentProject);
+            const newTaskElement = createTaskElement(newTask);
             main.appendChild(newTaskElement.container);
             storage.addTask(currentProject, newTask.taskObject)
         }
     }
     const initializeTasks = (taskObject) => {
-        const newTask = task(taskObject.title, taskObject.description, taskObject.date);
+        const newTask = task(taskObject.title, taskObject.description, taskObject.date, taskObject.project);
         newTask.taskObject.isCompleted = taskObject.isCompleted;
-        const newTaskElement = createTaskElement(newTask.taskObject, newTask);
+        const newTaskElement = createTaskElement(newTask);
         main.appendChild(newTaskElement.container);
         return newTask.taskObject;
     }

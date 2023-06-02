@@ -1,7 +1,9 @@
 function showPopUp() {
     const element = document.querySelector(".add-task");
     element.classList.toggle('hide-popup');
-    element.classList.toggle('show-popup');
+    if (!element.classList.toggle('show-popup')) {
+        rervertPopUp();
+    }
 }
 const informationPopUp = (taskDetails) => {
     const title = document.querySelector("#title");

@@ -7,7 +7,7 @@ function newProject(projectName) {
 }
 function removeProject(projectName) {
     projects.removeItem(projectName);
-}
+}   
 function addTask(projectName, task) {
     let storedTasks = JSON.parse(projects.getItem(projectName));
     storedTasks.push(task);

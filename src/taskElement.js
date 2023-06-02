@@ -3,12 +3,12 @@ import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
 import { informationPopUp, rervertPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
 import * as storage from "./localStorage.js";
-const createTaskElement = (taskDetails, taskObject) => {
+const createTaskElement = (taskObject) => {
     const myTaskObject = taskObject;
-    const myDetails = taskDetails;
+    const myDetails = myTaskObject.taskObject;
     const container = document.createElement("div");
     container.classList.add("task");
-    if (taskDetails.isCompleted) {
+    if (myDetails.isCompleted) {
         container.classList.add("checked");
     }
     else {
@@ -16,14 +16,14 @@ const createTaskElement = (taskDetails, taskObject) => {
     }
     let counter = 0;
 
-    for (let key in taskDetails) {
+    for (let key in myDetails) {
         if (counter === 3) {
             break;
         }
         else {
             const newDiv = document.createElement("div");
             newDiv.classList.add(key);
-            newDiv.textContent = taskDetails[key];
+            newDiv.textContent = myDetails[key];
             container.appendChild(newDiv);
             counter = counter + 1;
         }
@@ -50,17 +50,20 @@ const createTaskElement = (taskDetails, taskObject) => {
                 details[0].value = elements[0].textContent;
                 details[1].value = elements[1].textContent;
                 details[2].value = elements[2].textContent;
-                editButton.addTask.addEventListener('click', (event) => {
-                    event.stopPropagation()
-                    editTask(details[0].value, details[1].value, details[2].value);
-                    showPopUp();
-                    rervertPopUp();
-                }, { once: true });
+                if (!editButton.addTask.getAttribute("data-listenerAdded")) {
+                    editButton.addTask.setAttribute("data-listenerAdded", "true");
+                    editButton.addTask.addEventListener('click', (event) => {
+                        event.stopPropagation()
+                        editTask(details[0].value, details[1].value, details[2].value);
+                        showPopUp();
+                        editButton.addTask.setAttribute("data-listenerAdded", "");
+                    }, { once: true });
+                }
             });
         }
         else if (opCounter === 2) {
             newImage.addEventListener('click', () => {
-                const currentProject = document.querySelector(".project-title").textContent;
+                const currentProject = myTaskObject.taskObject.project;
                 storage.removeTask(currentProject, myTaskObject.taskObject.identifier);
                 container.remove();
             });
@@ -73,7 +76,7 @@ const createTaskElement = (taskDetails, taskObject) => {
         let parent = e.target;
         if (parent.classList.contains("task")) {
             updateStatus();
-            const currentProject = document.querySelector(".project-title").textContent;
+            const currentProject = myTaskObject.taskObject.project;
             storage.updateTaskStatus(currentProject, myDetails);
         }
     });
@@ -90,14 +93,10 @@ const createTaskElement = (taskDetails, taskObject) => {
     }
     // edit the task
     const editTask = (title, description, date) => {
-        const currentProject = document.querySelector(".project-title").textContent;
+        const currentProject = myTaskObject.taskObject.project;
         let previousIdentifier = myTaskObject.taskObject.identifier;
-
         myTaskObject.editTask(title, description, date);
         storage.editTask(currentProject, myTaskObject, previousIdentifier);
-
-
-
         let elements = Array.from(container.childNodes);
         elements[0].textContent = title;
         elements[1].textContent = description;
