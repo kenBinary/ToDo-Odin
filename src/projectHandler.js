@@ -94,7 +94,11 @@ function addProject(projects, input) {
         // listener for when remove project element is clicked
         removeOption.addEventListener('click', (event) => {
             event.stopPropagation();
-            const currentProject = document.querySelector(".project-title");
+            storage.removeProject(newDiv.textContent);
+            taskFacilitator.removeAllTasks();
+            newDiv.remove();
+            const projectTitle = document.querySelector(".project-title");
+            projectTitle.textContent = "All";
         });
         newDiv.appendChild(removeOption);
         projects.appendChild(newDiv);
@@ -121,7 +125,11 @@ function addProject(projects, input) {
         });
         removeOption.addEventListener('click', (event) => {
             event.stopPropagation();
-            const currentProject = document.querySelector(".project-title");
+            storage.removeProject(newDiv.textContent);
+            taskFacilitator.removeAllTasks();
+            newDiv.remove();
+            const projectTitle = document.querySelector(".project-title");
+            projectTitle.textContent = "All";
         });
         newDiv.appendChild(removeOption);
         projects.appendChild(newDiv);
