@@ -1,11 +1,10 @@
 import information from "../dist/resources/information.png";
 import edit from "../dist/resources/edit.png";
 import remove from "../dist/resources/remove.png";
-import { informationPopUp, rervertPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
+import { informationPopUp, editPopUp, showPopUp, getPopUpDetails } from "./popup.js";
 import * as storage from "./localStorage.js";
 const createTaskElement = (taskObject) => {
-    const myTaskObject = taskObject;
-    const myDetails = myTaskObject.taskObject;
+    const myDetails = taskObject.taskObject;
     const container = document.createElement("div");
     container.classList.add("task");
     if (myDetails.isCompleted) {
@@ -15,7 +14,6 @@ const createTaskElement = (taskObject) => {
         container.classList.add("unchecked");
     }
     let counter = 0;
-
     for (let key in myDetails) {
         if (counter === 3) {
             break;
@@ -30,17 +28,16 @@ const createTaskElement = (taskObject) => {
     }
     // task operations
     const elementOperations = [information, edit, remove];
-    let opCounter = 0;
-    elementOperations.forEach(element => {
+    elementOperations.forEach((element, index, array) => {
         const newImage = new Image();
         newImage.src = element;
-        if (opCounter === 0) {
+        if (index === 0) {
             newImage.addEventListener('click', () => {
                 informationPopUp(myDetails);
                 showPopUp();
             });
         }
-        else if (opCounter === 1) {
+        else if (index === 1) {
             newImage.addEventListener('click', () => {
                 showPopUp();
                 const editButton = editPopUp();
@@ -61,14 +58,13 @@ const createTaskElement = (taskObject) => {
                 }
             });
         }
-        else if (opCounter === 2) {
+        else if (index === 2) {
             newImage.addEventListener('click', () => {
-                const currentProject = myTaskObject.taskObject.project;
-                storage.removeTask(currentProject, myTaskObject.taskObject.identifier);
+                const currentProject = taskObject.taskObject.project;
+                storage.removeTask(currentProject, taskObject.taskObject.identifier);
                 container.remove();
             });
         }
-        opCounter++;
         container.appendChild(newImage);
     });
     //update task status
@@ -76,7 +72,7 @@ const createTaskElement = (taskObject) => {
         let parent = e.target;
         if (parent.classList.contains("task")) {
             updateStatus();
-            const currentProject = myTaskObject.taskObject.project;
+            const currentProject = taskObject.taskObject.project;
             storage.updateTaskStatus(currentProject, myDetails);
         }
     });
@@ -93,10 +89,10 @@ const createTaskElement = (taskObject) => {
     }
     // edit the task
     const editTask = (title, description, date) => {
-        const currentProject = myTaskObject.taskObject.project;
-        let previousIdentifier = myTaskObject.taskObject.identifier;
-        myTaskObject.editTask(title, description, date);
-        storage.editTask(currentProject, myTaskObject, previousIdentifier);
+        const currentProject = taskObject.taskObject.project;
+        let previousIdentifier = taskObject.taskObject.identifier;
+        taskObject.editTask(title, description, date);
+        storage.editTask(currentProject, taskObject, previousIdentifier);
         let elements = Array.from(container.childNodes);
         elements[0].textContent = title;
         elements[1].textContent = description;

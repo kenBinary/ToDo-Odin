@@ -1,5 +1,4 @@
 const task = (title, description, date, project) => {
-
     let taskObject = {
         "title": title,
         "description": description,
@@ -16,7 +15,7 @@ const task = (title, description, date, project) => {
     }
     let updateStatus = (currentStatus) => {
         if (currentStatus) {
-            taskObject.isCompleted = false
+            taskObject.isCompleted = false;
         }
         else {
             taskObject.isCompleted = true;
